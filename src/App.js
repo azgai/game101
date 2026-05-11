@@ -16,11 +16,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
 
-        <Route path="/tictactoe" element={<TicTacToe />} />
-        <Route path="/memory" element={<MemoryGame />} />
-        <Route path="/snake" element={<SnakeGame />} />
-        <Route path="/pong" element={<PongGame />} />
-        <Route path="/hangman" element={<HangmanGame />} />
       </Routes>
     </Router>
   );
