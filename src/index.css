@@ -263,6 +263,15 @@ body {
   color: #bbbbbb;
 }
 
+.game-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  color: white;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 768px) {
@@ -293,3 +302,4 @@ body {
     gap: 20px;
   }
 }
+

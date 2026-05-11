@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+
 function Home() {
     const categories = [
         {
@@ -56,10 +59,12 @@ function Home() {
         },
     ];
 
+    const createPath = (name) =>
+        "/" + name.toLowerCase().replaceAll(" ", "-");
+
     return (
         <div className="app">
             {/* NAVBAR */}
-
             <nav className="navbar">
                 <div className="logo">GAMEZONE</div>
 
@@ -70,15 +75,12 @@ function Home() {
                 </div>
             </nav>
 
-            {/* HERO SECTION */}
-
+            {/* HERO */}
             <section className="hero">
                 <div className="hero-content">
                     <h1>WELCOME to the World-of-Pixels</h1>
 
-                    <p>
-                        Explore games and compete in the online-arcade.
-                    </p>
+                    <p>Explore games and compete in the online-arcade.</p>
 
                     <div className="hero-buttons">
                         <button>Play Now</button>
@@ -87,8 +89,7 @@ function Home() {
                 </div>
             </section>
 
-            {/* FEATURED SECTION */}
-
+            {/* FEATURED */}
             <section className="featured-section">
                 <h2>Featured Games</h2>
 
@@ -108,7 +109,6 @@ function Home() {
             </section>
 
             {/* CATEGORIES */}
-
             <section className="categories-section">
                 <h2>Game Categories</h2>
 
@@ -119,9 +119,13 @@ function Home() {
 
                             <div className="games-list">
                                 {category.games.map((game, gameIndex) => (
-                                    <button className="game-button" key={gameIndex}>
+                                    <Link
+                                        key={gameIndex}
+                                        to={createPath(game)}
+                                        className="game-button"
+                                    >
                                         {game}
-                                    </button>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -130,18 +134,7 @@ function Home() {
             </section>
 
             {/* FOOTER */}
-
-            <footer className="footer">
-                <div className="footer-content">
-                    <h3>GAMEZONE</h3>
-
-                    <div className="footer-links">
-                        <span>About</span>
-                        <span>Support</span>
-                        <span>Contact</span>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 }
