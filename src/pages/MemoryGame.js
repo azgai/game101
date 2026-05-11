@@ -50,30 +50,58 @@ function MemoryGame() {
 
     useEffect(() => {
         if (firstCard !== null && secondCard !== null) {
-            const updatedCards = [...cards];
 
             if (
-                updatedCards[firstCard].emoji ===
-                updatedCards[secondCard].emoji
+                cards[firstCard].emoji ===
+                cards[secondCard].emoji
             ) {
-                updatedCards[firstCard].matched = true;
-                updatedCards[secondCard].matched = true;
 
-                setCards(updatedCards);
+                setCards(prevCards =>
+                    prevCards.map((card, index) => {
+
+                        if (
+                            index === firstCard ||
+                            index === secondCard
+                        ) {
+                            return {
+                                ...card,
+                                matched: true,
+                            };
+                        }
+
+                        return card;
+                    })
+                );
 
                 resetTurn();
-            } else {
-                setTimeout(() => {
-                    updatedCards[firstCard].flipped = false;
-                    updatedCards[secondCard].flipped = false;
 
-                    setCards([...updatedCards]);
+            } else {
+
+                setTimeout(() => {
+
+                    setCards(prevCards =>
+                        prevCards.map((card, index) => {
+
+                            if (
+                                index === firstCard ||
+                                index === secondCard
+                            ) {
+                                return {
+                                    ...card,
+                                    flipped: false,
+                                };
+                            }
+
+                            return card;
+                        })
+                    );
 
                     resetTurn();
+
                 }, 1000);
             }
         }
-    }, [secondCard]);
+    }, [firstCard, secondCard, cards]);
 
     function resetTurn() {
         setFirstCard(null);
