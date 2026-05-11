@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 
-function GameCard({ title, link }) {
+function GameCard({ game }) {
     return (
-        <Link to={link}>
-            <button className="game-button">
-                {title}
-            </button>
+        <Link to={game.path} className="game-card">
+            <div className="game-emoji">{game.emoji}</div>
+
+            <h3>{game.title}</h3>
+
+            <p>{game.category}</p>
         </Link>
     );
 }

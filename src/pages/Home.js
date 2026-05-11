@@ -1,28 +1,50 @@
 import Navbar from '../components/Navbar';
 import GameCard from '../components/GameCard';
+import games from '../data/games';
 
 function Home() {
+    const categories = [
+        'Puzzle Games',
+        'Arcade Games',
+        'Strategy Games',
+        'Casual Games',
+    ];
+
     return (
         <div className="page">
             <Navbar />
 
-            <h1>Game Hub</h1>
+            <section className="hero">
+                <h1>World of Pixels</h1>
 
-            <p>Select a game below.</p>
+                <p>
+                    Welcome to the game room!
+                </p>
+            </section>
 
-            <div className="games-grid">
-                <GameCard
-                    title="Tic Tac Toe"
-                    link="/tic-tac-toe"
-                />
+            {categories.map((category) => (
+                <section key={category} className="category-section">
+                    <h2>{category}</h2>
 
-                <GameCard
-                    title="Memory Game"
-                    link="/memory-game"
-                />
-            </div>
+                    <div className="games-grid">
+                        {games
+                            .filter((game) => game.category === category)
+                            .map((game) => (
+                                <GameCard
+                                    key={game.title}
+                                    game={game}
+                                />
+                            ))}
+                    </div>
+                </section>
+            ))}
         </div>
     );
 }
 
 export default Home;
+
+
+
+
+
