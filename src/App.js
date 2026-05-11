@@ -1,19 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import Home from './pages/Home';
-import TicTacToe from './pages/TicTacToe';
-import MemoryGame from './pages/MemoryGame';
+import Home from "./Home";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tic-tac-toe" element={<TicTacToe />} />
-        <Route path="/memory-game" element={<MemoryGame />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <Home />;
 }
 
 export default App;
